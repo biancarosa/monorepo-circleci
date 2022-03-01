@@ -15,9 +15,6 @@ jobs:
           password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
     steps:
       - checkout
-      - run:
-          name: Generate config
-          command: ./.circleci/generate-config.sh 
       - continuation/continue:
           configuration_path: generated_config.yml
 
