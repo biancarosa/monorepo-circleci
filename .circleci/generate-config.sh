@@ -1,1 +1,2 @@
-mv generated_config.yml.tml generated_config.yml
+cd .circleci
+cp generated_config.yml.tpl generated_config.yml
