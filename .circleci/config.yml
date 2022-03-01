@@ -8,15 +8,12 @@ orbs:
 
 jobs:
   setup:
-    executor: python/default
+    executor: path-filtering/filter
     steps:
       - checkout  # checkout source code to working directory
       - run:
           name: Generate config
           command: ./.circleci/generate-config.sh
-  filter:
-    executor: path-filtering/default
-    steps:
       - path-filtering/filter:
           base-revision: main
           config-path: generated_config.yml
