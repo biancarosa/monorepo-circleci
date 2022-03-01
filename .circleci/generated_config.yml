@@ -9,5 +9,3 @@ jobs:
           password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
     steps:
       - checkout  # checkout source code to working directory
-      - python/install-packages:
-          pkg-manager: pipenv
