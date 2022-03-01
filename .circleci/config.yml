@@ -8,7 +8,7 @@ orbs:
 
 jobs:
   setup:
-    executor: path-filtering/filter
+    executor: path-filtering/default
     steps:
       - checkout  # checkout source code to working directory
       - run:
