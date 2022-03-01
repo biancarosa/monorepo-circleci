@@ -11,7 +11,7 @@ jobs:
     executor: continuation/default
     steps:
       - continuation/continue:
-          configuration_path: generated_config.yml
+          configuration_path: ./circleci/generated_config.yml
 
 workflows:
   setup:
