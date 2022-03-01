@@ -6,8 +6,13 @@ orbs:
   continuation: circleci/continuation@0.1.2
   python: circleci/python@2.0.1
 
+jobs:
+  setup:
+    steps:
+      - continuation/continue:
+          configuration_path: generated_config.yml
+
 workflows:
   setup:
     jobs:
-      - continuation/continue:
-          configuration_path: generated_config.yml
+      - setup
