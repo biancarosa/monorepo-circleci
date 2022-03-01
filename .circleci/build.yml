@@ -1,4 +1,5 @@
-- run:
-          command: |  # use pipenv to install dependencies
-            sudo pip install pipenv
-            pipenv install
+
+      - run:
+        command: |  # use pipenv to install dependencies
+          sudo pip install pipenv
+          pipenv install
