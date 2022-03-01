@@ -3,14 +3,15 @@ version: 2.1
 setup: true
 
 orbs:
-  continuation: circleci/continuation@0.1.2
+  continuation: circleci/continuation@0.2.0
+  python: circleci/python@2.0.1
 
 jobs:
   setup:
     executor: continuation/default
     steps:
       - checkout
-      - run:
+      - python/run:
           name: Generate config
           command: ./.circleci/generate-config.sh 
       - continuation/continue:
