@@ -8,10 +8,10 @@ orbs:
 
 jobs:
   setup:
-    executor: continuation/default
+    executor: python/default
     steps:
       - checkout  # checkout source code to working directory
-      - python/run:
+      - run:
           name: Generate config
           command: ./.circleci/generate-config.sh
       - continuation/continue:
