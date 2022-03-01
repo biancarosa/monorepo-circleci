@@ -8,7 +8,11 @@ orbs:
 
 jobs:
   setup:
-    executor: python/default
+    docker:
+      - image: cimg/python:3.10.1  # primary container for the build job
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
     steps:
       - checkout
       - python/install-packages:
