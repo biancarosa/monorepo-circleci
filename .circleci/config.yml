@@ -24,6 +24,7 @@ jobs:
             backend/api/.*       service    api
             backend/consumer/.*  service    consumer
             frontend/.*          service    frontend
+            .*                   service    none
 workflows:
   setup:
     jobs:
