@@ -3,22 +3,11 @@ version: 2.1
 setup: true
 
 orbs:
-  continuation: circleci/continuation@0.2.0
+  continuation: circleci/continuation@0.1.2
   python: circleci/python@2.0.1
-
-jobs:
-  setup:
-    docker:
-      - image: cimg/python:3.10.1  # primary container for the build job
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
-    steps:
-      - checkout
-      - continuation/continue:
-          configuration_path: generated_config.yml
 
 workflows:
   setup:
     jobs:
-      - setup
+      - continuation/continue:
+          configuration_path: generated_config.yml
