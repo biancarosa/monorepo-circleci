@@ -1,2 +1,3 @@
 cd .circleci
-cp generated_config.yml.tpl generated_config.yml
+pip install envtpl
+envtpl ci-template.yml -o generated_config.yml --keep-template
