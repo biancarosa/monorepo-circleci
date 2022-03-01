@@ -1,0 +1,1 @@
+mv generated_config.yml.tml generated_config.yml
