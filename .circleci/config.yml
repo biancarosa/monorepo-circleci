@@ -11,7 +11,7 @@ jobs:
     executor: continuation/default
     steps:
       - checkout  # checkout source code to working directory
-      - run:
+      - python/run:
           name: Generate config
           command: ./.circleci/generate-config.sh
       - continuation/continue:
