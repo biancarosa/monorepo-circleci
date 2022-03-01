@@ -10,6 +10,7 @@ jobs:
   setup:
     executor: continuation/default
     steps:
+      - checkout  # checkout source code to working directory
       - continuation/continue:
           configuration_path: generated_config.yml
 
