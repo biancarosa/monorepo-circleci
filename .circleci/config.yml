@@ -12,7 +12,7 @@ jobs:
       - checkout
       - run:
           name: Generate config
-          command: ./generate-config.sh 
+          command: ./.circleci/generate-config.sh 
       - continuation/continue:
           configuration_path: generated_config.yml
 
