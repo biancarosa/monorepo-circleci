@@ -11,7 +11,9 @@ jobs:
     executor: continuation/default
     steps:
       - checkout
-      - python/run:
+      - python/install-packages:
+          pkg-manager: pip
+      - run:
           name: Generate config
           command: ./.circleci/generate-config.sh 
       - continuation/continue:
