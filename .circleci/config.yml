@@ -8,6 +8,7 @@ orbs:
 
 jobs:
   setup:
+    executor: continuation/default
     steps:
       - continuation/continue:
           configuration_path: generated_config.yml
