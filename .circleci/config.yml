@@ -4,11 +4,11 @@ setup: true
 
 orbs:
   python: circleci/python@2.0.1
-  path-filtering: circleci/path-filtering@0.0.1
+  path-filtering: circleci/path-filtering@0.1.1
 
 jobs:
   setup:
-    executor: path-filtering/default
+    executor: python/default
     steps:
       - checkout  # checkout source code to working directory
       - run:
@@ -21,7 +21,6 @@ jobs:
             backend/api/.*       service    api
             backend/consumer/.*  service    consumer
             frontend/.*          service    frontend
-            .*                   service    none
 workflows:
   setup:
     jobs:
