@@ -1,3 +1,4 @@
+version: 2
 jobs:
   build:  # required for runs that don't use workflows
     working_directory: ~/backend/api
@@ -8,5 +9,6 @@ jobs:
           password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
     steps:
       - checkout  # checkout source code to working directory
+      
       - python/install-packages:
           pkg-manager: pipenv
