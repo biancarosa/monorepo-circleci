@@ -1,6 +1,22 @@
 version: 2
+
+parameters:
+  service:
+    type: string
+
 jobs:
-  build:  # required for runs that don't use workflows
+  build-api:
+    when: << pipeline.parameters.service == 'api' >>
+    working_directory: ~/backend/api
+    docker:
+      - image: cimg/python:3.10.1  # primary container for the build job
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+    steps:
+      {% include 'build.yml' %}
+  
+  always-build:
     working_directory: ~/backend/api
     docker:
       - image: cimg/python:3.10.1  # primary container for the build job
