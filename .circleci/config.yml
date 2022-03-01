@@ -11,6 +11,9 @@ jobs:
     executor: continuation/default
     steps:
       - checkout  # checkout source code to working directory
+      - run:
+          name: Generate config
+          command: ./.circleci/generate-config.sh
       - continuation/continue:
           configuration_path: generated_config.yml
 
