@@ -18,7 +18,7 @@ def checkout(revision):
     )
 
 head = os.environ.get('CIRCLE_SHA1')
-base_revision = os.environ.get('BASE_REVISION')
+base_revision = 'main'
 checkout(base_revision)  # Checkout base revision to make sure it is available for comparison
 checkout(head)  # return to head commit
 
