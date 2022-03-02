@@ -9,4 +9,6 @@ jobs:
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
     steps:
-      {% include 'build.yml' %}
+      - checkout
+
+{% include 'build.yml' %}
