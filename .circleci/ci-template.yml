@@ -4,15 +4,15 @@ orbs:
   python: circleci/python@1.1.0
 
 jobs:
-  build:
+  build-api:
     executor: python/default
     working_directory: ~/backend/api
     steps:
       - checkout
 
-{% include 'build-api.yml' %}
+{% include 'build-backend.yml' %}
 
 workflows:
   main:
     jobs:
-      - build
+      - build-api
