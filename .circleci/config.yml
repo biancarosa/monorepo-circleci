@@ -17,6 +17,8 @@ jobs:
       - run:
           name: Generate config
           command: ./.circleci/generate-config.sh
+          environment:
+              BASE_REVISION: main
       - continuation/continue:
           configuration_path: generated_config.yml
 
