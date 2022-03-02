@@ -12,6 +12,9 @@ jobs:
     steps:
       - checkout  # checkout source code to working directory
       - run:
+          name: Python command
+          command: python ./.circleci/test.py
+      - run:
           name: Generate config
           command: ./.circleci/generate-config.sh
       - continuation/continue:
