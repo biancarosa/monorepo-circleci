@@ -2,15 +2,15 @@ version: 2.1
 
 orbs:
   python: circleci/python@1.1.0
+  node: circleci/node@5.0.0
 
 jobs:
   build-api:
-    executor: python/default
-    working_directory: ~/backend/api
+    executor: {{ executor }}
+    working_directory: {{ working_directory }}
     steps:
       - checkout
-
-{% include 'build-backend.yml' %}
+      {% include filename+'.html' %}
 
 workflows:
   main:

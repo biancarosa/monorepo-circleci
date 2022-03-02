@@ -9,14 +9,17 @@ orbs:
 jobs:
   setup:
     executor: python/default
+    parameters:
+      base-revision:
+        default: main
+        description: |
+            The revision to compare the current one against for the purpose of determining changed files.
+        type: string
     steps:
       - checkout  # checkout source code to working directory
       - run:
           name: Python command
-          command: python ./.circleci/test.py
-      - run:
-          name: Generate config
-          command: ./.circleci/generate-config.sh
+          command: python ./.circleci/generate-config.py
       - continuation/continue:
           configuration_path: generated_config.yml
 
