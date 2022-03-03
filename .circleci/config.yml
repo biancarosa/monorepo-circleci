@@ -23,6 +23,9 @@ jobs:
       - run:
           name: Python command
           command: python ./.circleci/generate-config.py
+      - run:
+          name: check file
+          command: cat generated_config.yml
       - continuation/continue:
           configuration_path: generated_config.yml
 
