@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 
 
-!.circleci/build/*.yml
+!.circleci/build/
