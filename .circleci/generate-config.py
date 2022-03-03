@@ -101,10 +101,12 @@ variables = {
         'working_dir': ' ~/frontend'
     }
 }
-
-if len(changes) == 0:
+print(changes)
+if len(changes)  == 0:
+    print('Building all...')
     builds = variables
 else:
+    print('Building only changes...')
     builds = {}
     for k in variables:
         for c in changes:
