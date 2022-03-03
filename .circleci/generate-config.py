@@ -102,12 +102,15 @@ variables = {
     }
 }
 
-builds = {}
-for k in variables:
-    for c in changes:
-        if k in c:
-            builds[k] = variables[k]
-            continue
+if len(changes) == 0:
+    builds = variables
+else:
+    builds = {}
+    for k in variables:
+        for c in changes:
+            if k in c:
+                builds[k] = variables[k]
+                continue
 print(builds)
 output = _render_file('./.circleci/ci-template.yml',builds=builds)
 with open(output_filename, 'wb') as f:
