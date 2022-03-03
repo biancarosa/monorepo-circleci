@@ -2,19 +2,44 @@ version: 2.1
 
 orbs:
   python: circleci/python@1.1.0
+  node: circleci/node@5.0.0
 
 jobs:
-  build-api:
+  
+  build-backend/api:
     executor: python/default
-    working_directory: ~/backend/api
+    working_directory: 
     steps:
       - checkout
-
-
+      
       - python/install-packages:
           pkg-manager: pipenv
+  
+  build-backend/consumer:
+    executor: python/default
+    working_directory: 
+    steps:
+      - checkout
+      
+      - python/install-packages:
+          pkg-manager: pipenv
+  
+  build-frontend:
+    executor: node/default
+    working_directory: 
+    steps:
+      - checkout
+      
+      - node/install
+  
 
 workflows:
   main:
     jobs:
-      - build-api
+      
+      - build-backend/api
+      
+      - build-backend/consumer
+      
+      - build-frontend
+      

@@ -101,18 +101,15 @@ variables = {
         'working_dir': ' ~/frontend'
     }
 }
-print(changes)
-if len(changes)  == 0:
+builds = {}
+for k in variables:
+    for c in changes:
+        if k in c:
+            builds[k] = variables[k]
+            continue
+if len(builds)  == 0:
     print('Building all...')
     builds = variables
-else:
-    print('Building only changes...')
-    builds = {}
-    for k in variables:
-        for c in changes:
-            if k in c:
-                builds[k] = variables[k]
-                continue
 print(builds)
 output = _render_file('./.circleci/ci-template.yml',builds=builds)
 with open(output_filename, 'wb') as f:
