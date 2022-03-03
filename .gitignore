@@ -129,4 +129,5 @@ dmypy.json
 .pyre/
 
 
+generated_config.yml
 !.circleci/build/
