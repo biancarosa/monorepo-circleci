@@ -18,6 +18,9 @@ jobs:
     steps:
       - checkout  # checkout source code to working directory
       - run:
+          name: Install Jinja2
+          command: pip install jinja2
+      - run:
           name: Python command
           command: python ./.circleci/generate-config.py
       - continuation/continue:
