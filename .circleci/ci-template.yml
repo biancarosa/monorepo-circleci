@@ -5,14 +5,18 @@ orbs:
   node: circleci/node@5.0.0
 
 jobs:
-  build-api:
-    executor: {{ executor }}
-    working_directory: {{ working_directory }}
+  {% for k in builds %}
+  build-{{k}}:
+    executor: {{ builds[k]['executor'] }}
+    working_directory: {{ builds[k]['working_directory'] }}
     steps:
       - checkout
-      {% include filename+'.html' %}
+      {% include builds[k]['filename'] %}
+  {% endfor %}
 
 workflows:
   main:
     jobs:
-      - build-api
+      {% for k in builds %}
+      - build-{{k}}
+      {% endfor %}

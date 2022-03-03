@@ -6,20 +6,19 @@ import re
 import subprocess
 import jinja2
 
-def _render_file(filename, variables):
+def _render_file(filename, **variables):
     dirname = os.path.dirname(filename)
     loader = jinja2.FileSystemLoader(dirname)
     relpath = os.path.relpath(filename, dirname)
-    return _render(relpath, variables, loader)
+    return _render(relpath,loader, variables)
 
 
-def _render(template_name, variables, loader):
+def _render(template_name, loader, variables):
     env = jinja2.Environment(loader=loader, undefined=jinja2.Undefined)
 
     template = env.get_template(template_name)
-
     try:
-        output = template.render(**variables)
+        output = template.render(variables)
     except jinja2.UndefinedError as e:
         raise Fatal(e)
 
@@ -81,8 +80,8 @@ try:
     ).stdout.decode('utf-8').splitlines()
 except:
     print('No changes found')
+    
 print(changes)
-changes = [ 'backend/api']
 output_filename = 'generated_config.yml'
 
 variables = {
@@ -102,6 +101,14 @@ variables = {
         'working_dir': ' ~/frontend'
     }
 }
-output = _render_file('./.circleci/ci-template.yml',variables)
+
+builds = {}
+for k in variables:
+    for c in changes:
+        if k in c:
+            builds[k] = variables[k]
+            continue
+print(builds)
+output = _render_file('./.circleci/ci-template.yml',builds=builds)
 with open(output_filename, 'wb') as f:
   f.write(output.encode('utf-8'))
