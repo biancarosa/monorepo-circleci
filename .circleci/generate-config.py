@@ -123,8 +123,9 @@ def generate_output(changes=[]) -> bytes:
     print(changes)
     builds = {}
     for k in variables:
-        if any(c in k for c in changes):
-            builds[k] = variables[k]
+        for c in changes:
+            if k in c:
+                builds[k] = variables[k]
     if len(builds) == 0:
         print("Building all...")
         builds = variables
