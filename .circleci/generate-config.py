@@ -46,7 +46,7 @@ def check_diff_between_branch_and_base() -> []:
     changes = []
     try:
         head = os.environ.get("CIRCLE_SHA1")
-        base_revision = "dev"
+        base_revision = "main"
         checkout(
             base_revision
         )  # Checkout base revision to make sure it is available for comparison
