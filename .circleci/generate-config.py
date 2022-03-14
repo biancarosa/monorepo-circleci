@@ -39,7 +39,7 @@ def checkout(revision) -> None:
 
 def is_pull_request() -> bool:
     print(os.environ.get("CIRCLE_PULL_REQUEST"))
-    return True if os.environ.get("CIRCLE_PR_NUMBER") else False
+    return True if os.environ.get("CIRCLE_PULL_REQUEST") else False
 
 
 def check_diff_between_branch_and_base() -> []:
