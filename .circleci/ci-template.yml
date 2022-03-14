@@ -6,7 +6,7 @@ orbs:
 
 jobs:
   {% for k in builds %}
-  build-{{k}}:
+  build-{{builds[k]['jobname']}}:
     executor: {{ builds[k]['executor'] }}
     working_directory: {{ builds[k]['working_directory'] }}
     steps:
@@ -18,5 +18,5 @@ workflows:
   main:
     jobs:
       {% for k in builds %}
-      - build-{{k}}
+      - build-{{builds[k]['jobname']}}
       {% endfor %}

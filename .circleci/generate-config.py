@@ -101,20 +101,23 @@ def check_diff_between_branch_and_base() -> []:
 
 def generate_output(changes=[]) -> bytes:
     variables ={
-        'backend-api' : {
+        'backend/api' : {
             'filename': 'build/api.yml',
             'executor' : 'python/default',
-            'working_dir': ' ~/backend/api'
+            'working_dir': ' ~/backend/api',
+            'jobname': 'backend-api'
         },
-        'backend-consumer' : {
+        'backend/consumer' : {
             'filename': 'build/consumer.yml',
             'executor' : 'python/default',
-            'working_dir': ' ~/backend/consumer'
+            'working_dir': ' ~/backend/consumer',
+            'jobname': 'backend-consumer'
         },
         'frontend' : {
             'filename': 'build/frontend.yml',
             'executor' : 'node/default',
-            'working_dir': ' ~/frontend'
+            'working_dir': ' ~/frontend',
+            'jobname': 'frontend'
         }
     }
     builds = {}
