@@ -120,6 +120,7 @@ def generate_output(changes=[]) -> bytes:
             'jobname': 'frontend'
         }
     }
+    print(changes)
     builds = {}
     for k in variables:
         if any(c in k for c in changes):
